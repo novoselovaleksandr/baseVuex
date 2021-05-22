@@ -8,8 +8,8 @@ export default {
         }
     },
     actions: {
-        async fetchPosts(context) {
-            const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3');
+        async fetchPosts(context, limit = 3) {
+            const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=' + limit);
             const posts = await res.json();
 
             context.commit('updatePosts', posts)
@@ -18,6 +18,9 @@ export default {
     getters: {
         allPosts(state) {
             return state.posts;
+        },
+        postsCount(state) {
+            return state.posts.length;
         }
     },
 }
