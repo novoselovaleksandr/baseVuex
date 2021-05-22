@@ -23,7 +23,8 @@ export default {
                 title: this.title,
                 body: this.body,
                 id: Date.now()
-            })
+            });
+            this.title = this.body = '';
         }
     }
 }
